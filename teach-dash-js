@@ -1,0 +1,115 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const fileInput = document.getElementById('fileInput');
+    const imgArea = document.querySelector('.img-area');
+    const selectButton = document.querySelector('.select-image');
+  
+    selectButton.addEventListener('click', function() {
+      fileInput.click();
+    });
+  
+    fileInput.addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function() {
+          const fileContent = reader.result;
+          // Process the file content as needed
+          console.log(fileContent);
+          // Update the UI to indicate the file has been uploaded
+          imgArea.innerHTML = `<p>File uploaded: ${file.name}</p>`;
+        };
+        reader.readAsText(file);
+      }
+    });
+  
+    imgArea.addEventListener('dragover', function(event) {
+      event.preventDefault();
+      this.classList.add('active');
+      this.innerHTML = '<p>Release to upload the file</p>';
+    });
+  
+    ['dragleave', 'dragend'].forEach(function(type) {
+      imgArea.addEventListener(type, function() {
+        this.classList.remove('active');
+        this.innerHTML = `
+          <i class="icon-upload"></i>
+          <h3>Upload File</h3>
+        `;
+      });
+    });
+  
+    imgArea.addEventListener('drop', function(event) {
+      event.preventDefault();
+      const file = event.dataTransfer.files[0];
+      if (file) {
+        fileInput.files = event.dataTransfer.files;
+        const reader = new FileReader();
+        reader.onload = function() {
+          const fileContent = reader.result;
+          // Process the file content as needed
+          console.log(fileContent);
+          // Update the UI to indicate the file has been uploaded
+          this.innerHTML = `<p>File uploaded: ${file.name}</p>`;
+        }.bind(this);
+        reader.readAsText(file);
+      }
+    });
+  });
+
+
+
+
+  function handleUpload() {
+    const fileSelector = document.getElementById('file-selector');
+    const files = fileSelector.files;
+    const uploadMessage = document.getElementById('upload-message');
+  
+    if (files.length === 0) {
+      uploadMessage.textContent = 'No files selected.';
+      return;
+    }
+  
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formData.append('files[]', files[i]);
+    }
+  
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'upload.php');
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        uploadMessage.textContent = 'Files uploaded successfully!';
+      } else {
+        uploadMessage.textContent = 'File upload failed.';
+      }
+    };
+    xhr.send(formData);
+  } 
+
+
+  function uploadFiles() {
+    const fileInput = document.getElementById('fileInput');
+    const files = fileInput.files;
+    const uploadStatus = document.getElementById('uploadStatus');
+  
+    if (files.length === 0) {
+      uploadStatus.textContent = 'No files selected.';
+      return;
+    }
+  
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formData.append('files[]', files[i]);
+    }
+  
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'upload.php');
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        uploadStatus.textContent = 'Files uploaded successfully!';
+      } else {
+        uploadStatus.textContent = 'File upload failed.';
+      }
+    };
+    xhr.send(formData);
+  }
