@@ -1,0 +1,131 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #5e72e4;
+}
+
+.nav {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.nav li {
+  margin-bottom: 10px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #525f7f;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+}
+
+.account img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.account-info h4 {
+  margin: 0;
+  color: #525f7f;
+}
+
+.account-info p {
+  margin: 0;
+  color: #8898aa;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  color: #32325d;
+}
+
+.widgets {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.widget {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  margin-right: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.widget-icon {
+  margin-right: 10px;
+}
+
+.widget-icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.rocket-widget {
+  background-color: #fb6340;
+  color: #fff;
+}
+
+.charts {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.chart {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  margin-right: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.projects,
+.orders-overview {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #32325d;
+}
+
